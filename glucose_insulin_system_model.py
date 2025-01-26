@@ -4,27 +4,32 @@
 
 import control as ctrl
 import numpy as np
-from system_parameters import 
+import system_parameters
 
 EGP_b = U_b + E_b
 
-dG_p = EGP + Ra - U_ü - E - k1*G_p + k2*G_t     #G_p(0) = G_pb
-dG_t = -U_id + k1*G_p - k2*G_t                  #G_t(0) = G_tb
-G = G_p / V_G                                  #G(0) = G_b
+dG_p = EGP + Ra - U_ü - E - k_1*G_p + k_2*G_t
+G_p0 = G_pb
+dG_t = -U_id + k_1*G_p - k_2*G_t                  
+G_t0 = G_tb
+G = G_p / V_G                                 
 
-dI_t = -(m1 +m3)*I_t + m2*I_p +S                #I_t(0) = I_lb
-dI_p = -(m2+m4)*I_p + m1*I_l                    #I_p(0) = I_pb
-I = I_p / V_I                                   #I(0) = I_b
+dI_t = -(m_1 +m_3)*I_t + m_2*I_p + S                
+I_t0 = I_lb
+dI_p = -(m_2+m_4)*I_p + m_1*I_l                    
+I_p0 = I_pb
+I = I_p / V_I                                   
+I0 = I_b
 
-HE = -m5 * S_t + m6
+HE = -m_5 * S_t + m_6
 HE_0 = HE_b
-m3 = (HE * m1) / (1 - HE)
-m6 = m5 * S_b + HE_b
-m3_0 = (HE_b * m1) / (1 - HE_b)
-S_b = m3_0 * I_lb + m4 * I_pb
+m_3 = (HE * m_1) / (1 - HE)
+m_6 = m_5 * S_b + HE_b
+m3_0 = (HE_b * m_1) / (1 - HE_b)
+S_b = m3_0 * I_lb + m_4 * I_pb
 D_b = S_b
-m2 = ((S_b / I_pb) - (m4 / (1 - HE_b))) * ((1 - HE_b) / HE_b)
-m4 = (2 / 5) * (S_b / I_pb) * (1 - HE_b)
+m_2 = ((S_b / I_pb) - (m_4 / (1 - HE_b))) * ((1 - HE_b) / HE_b)
+m_4 = (2 / 5) * (S_b / I_pb) * (1 - HE_b)
 
 # Endogenous Glucose Production (EGP) equations
 EGP = k_p1 - k_p2 * G_p - k_p3 * I_d - k_p4 * I_po
@@ -68,7 +73,7 @@ X0 = 0
 
 U = U_ii + U_id
 
-G_tb = (F_cns - EGP_b + k1*G_pb)/ k2
+G_tb = (F_cns - EGP_b + k_1*G_pb)/ k_2
 
 V_m0 = ((EGP_b - F_cns)* (K_m0 + G_tb))/G_tb
 S = gamma * I_po
