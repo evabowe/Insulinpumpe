@@ -40,6 +40,46 @@ I_d_0 = I_b
 k_p1 = EGP_b + k_p2 * G_pb + k_p3 * I_b + k_p4 * I_pob
 
 # Glucose kinetics in the stomach and intestine
-dQ_sto = Q_sto1 + Q_sto2
+Q_sto = Q_sto1 + Q_sto2
 dQ_sto1 = -k_gri * Q_sto1 + D*d
-dQ_sto2 = -k_empt
+dQ_sto2 = -k_empt * Q_sto2 + k_gri*Q_sto1
+dQ_gut = -k_abs*Q_gut +k_epmt*Q_sto2
+Ra = (f*k_abs*Q_gut)/BW 
+
+Q_sto0 = 0
+Q_sto10 = 0
+Q_sto20 = 0
+Q_gut0 = 0
+Ra0 = 0
+
+EGP_b = F_cns + (V_m0 * G_tb)/(K_m0+G_tb)
+U_b = EGP_b 
+
+V_m0 = ((EGP_b - F_cns)*(K_m0 + G_tb))/G_tb
+
+U_ii = F_cns
+
+U_id = (V_m * G_t)/(K_m + G_t)
+V_m = V_m0 + V_mx * X
+K_m = K_m0 + K_mx * X
+
+dX = -p_2U * X + p_2U * (I - I_b)  #! check
+X0 = 0
+
+U = U_ii + U_id
+
+G_tb = (F_cns - EGP_b + k1*G_pb)/ k2
+
+V_m0 = ((EGP_b - F_cns)* (K_m0 + G_tb))/G_tb
+S = gamma * I_po
+dI_po = - gamma* I_po + S_po
+I_po0 = I_pob
+
+S_po = Y + K * dG + S_b if dG > 0 else Y + S_b          #! check
+
+E = k_e1 * (G_p - k_e2) if G_p > k_e2 else 0
+
+dY = -alpha * (Y- beta*(G-h)) if beta*(G-h) >= -S_b else -alpha*Y - alpha * S_b
+Y0 = 0
+
+
