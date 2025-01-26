@@ -14,14 +14,14 @@ dG_t = -U_id + k_1*G_p - k_2*G_t
 G_t0 = G_tb
 G = G_p / V_G                                 
 
-dI_t = -(m_1 +m_3)*I_t + m_2*I_p + S                
-I_t0 = I_lb
+dI_l = -(m_1 +m_3)*I_l + m_2*I_p + S                
+I_l0 = I_lb
 dI_p = -(m_2+m_4)*I_p + m_1*I_l                    
 I_p0 = I_pb
 I = I_p / V_I                                   
 I0 = I_b
 
-HE = -m_5 * S_t + m_6
+HE = -m_5 * S + m_6
 HE_0 = HE_b
 m_3 = (HE * m_1) / (1 - HE)
 m_6 = m_5 * S_b + HE_b
@@ -48,7 +48,7 @@ k_p1 = EGP_b + k_p2 * G_pb + k_p3 * I_b + k_p4 * I_pob
 Q_sto = Q_sto1 + Q_sto2
 dQ_sto1 = -k_gri * Q_sto1 + D*d
 dQ_sto2 = -k_empt * Q_sto2 + k_gri*Q_sto1
-dQ_gut = -k_abs*Q_gut +k_epmt*Q_sto2
+dQ_gut = -k_abs*Q_gut +k_empt*Q_sto2
 Ra = (f*k_abs*Q_gut)/BW 
 
 Q_sto0 = 0

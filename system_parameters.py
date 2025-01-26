@@ -46,3 +46,21 @@ gamma = {"norm_val": 0.5, "diab_val": 0.5}  # dimensionless
 # Renal Excretion
 k_e1 = {"norm_val": 0.0005, "diab_val": 0.0007}  # min^-1
 k_e2 = {"norm_val": 339, "diab_val": 269}  # mg/kg
+
+def return_parameters(type):
+    if type == "norm":
+        return [V_G["norm_val"], k_1["norm_val"], k_2["norm_val"], V_I["norm_val"], m_1["norm_val"], m_2["norm_val"],
+                m_4["norm_val"], m_5["norm_val"], m_6["norm_val"], HE_b["norm_val"], k_max["norm_val"],
+                k_min["norm_val"], k_abs["norm_val"], k_gri["norm_val"], f["norm_val"], a["norm_val"], b["norm_val"],
+                c["norm_val"], d["norm_val"], k_p1["norm_val"], k_p2["norm_val"], k_p3["norm_val"],
+                k_p4["norm_val"], k_i["norm_val"], F_cns["norm_val"], V_m0["norm_val"], V_mx["norm_val"],
+                K_m0["norm_val"], p_2U["norm_val"], K["norm_val"], alpha["norm_val"], beta["norm_val"],
+                gamma["norm_val"], k_e1["norm_val"], k_e2["norm_val"]]
+    elif type == "diab":
+        return [V_G["diab_val"], k_1["diab_val"], k_2["diab_val"], V_I["diab_val"], m_1["diab_val"], m_2["diab_val"],
+                m_4["diab_val"], m_5["diab_val"], m_6["diab_val"], HE_b["diab_val"], k_max["diab_val"],
+                k_min["diab_val"], k_abs["diab_val"], k_gri["diab_val"], f["diab_val"], a["diab_val"], b["diab_val"],
+                c["diab_val"], d["diab_val"], k_p1["diab_val"], k_p2["diab_val"], k_p3["diab_val"],
+                k_p4["diab_val"], k_i["diab_val"], F_cns["diab_val"], V_m0["diab_val"], V_mx["diab_val"],
+                K_m0["diab_val"], p_2U["diab_val"], K["diab_val"], alpha["diab_val"], beta["diab_val"],
+                gamma["diab_val"], k_e1["diab_val"], k_e2["diab_val"]]
